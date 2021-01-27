@@ -23,7 +23,7 @@ class Search extends Component {
     }
 
     render() {
-        const books = this.state.books.map(b => <li key={b.id}><Book book={b} /></li>)
+        const books = this.state.books.map(b => <li key={b.id}><Book book={b} onBookUpdate={this.props.onBookUpdate} /></li>)
 
         return (<div className="search-books">
             <div className="search-books-bar">

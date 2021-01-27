@@ -1,6 +1,7 @@
-const ShelfChanger = ({ shelf }) => (
+const ShelfChanger = ({ shelf, onShelfChangeHandler }) => (
+
     <div className="book-shelf-changer">
-        <select value={shelf}>
+        <select value={shelf || 'move'} onChange={onShelfChangeHandler}>
             <option value="move" disabled>Move to...</option>
             <option value="currentlyReading">Currently Reading</option>
             <option value="wantToRead" >Want to Read</option>
