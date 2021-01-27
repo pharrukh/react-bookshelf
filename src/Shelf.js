@@ -2,7 +2,7 @@ import Book from './Book'
 
 const Shelf = ({ books }) => {
 
-    const bookElements = books.map(b => (<li><Book book={b} /></li>))
+    const bookElements = books.map(b => (<li key={b.id}><Book book={b} /></li>))
 
     return (<div className="bookshelf">
         <h2 className="bookshelf-title">Currently Reading</h2>

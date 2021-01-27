@@ -1,27 +1,46 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import * as BooksAPI from './BooksAPI'
+import Book from './Book'
+import AwesomeDebouncePromise from 'awesome-debounce-promise';
 
-const Search = () => (<div className="search-books">
-    <div className="search-books-bar">
-        <Link to='/'>
-            <button className="close-search" >Close</button>
-        </Link>
-        <div className="search-books-input-wrapper">
-            {/*
-      NOTES: The search from BooksAPI is limited to a particular set of search terms.
-      You can find these search terms here:
-      https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md
+const search = text => BooksAPI.search(text)
+const debouncedSearch = AwesomeDebouncePromise(search, 500);
 
-      However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
-      you don't find a specific author or title. Every search is limited by search terms.
-    */}
-            <input type="text" placeholder="Search by title or author" />
+class Search extends Component {
+    state = {
+        books: []
+    }
 
-        </div>
-    </div>
-    <div className="search-books-results">
-        <ol className="books-grid"></ol>
-    </div>
-</div>)
+    inputChangedHandler = async (e) => {
+        const searchText = e.target.value
+        const result = await debouncedSearch(searchText, 1000)
+        if (!result || result.error) {
+            this.setState({ books: [] })
+        } else {
+            this.setState({ books: Array.from(result) })
+        }
+    }
+
+    render() {
+        const books = this.state.books.map(b => <li key={b.id}><Book book={b} /></li>)
+
+        return (<div className="search-books">
+            <div className="search-books-bar">
+                <Link to='/'>
+                    <button className="close-search" >Close</button>
+                </Link>
+                <div className="search-books-input-wrapper">
+                    <input type="text" placeholder="Search by title or author" onChange={this.inputChangedHandler} />
+                </div>
+            </div>
+            <div className="search-books-results">
+                <ol className="books-grid">
+                    {books}
+                </ol>
+            </div>
+        </div>)
+    }
+}
 
 export default Search;
