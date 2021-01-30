@@ -21,7 +21,7 @@ class Book extends Component {
         return (
             <div className="book">
                 <div className="book-top">
-                    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${this.state.book?.imageLinks?.thumbnail || ''}")` }}></div>
+                    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${this.state.book?.imageLinks?.thumbnail || 'no-image.jpg'}")` }}></div>
                     <ShelfChanger shelf={this.state.book.shelf} onShelfChangeHandler={this.handleShelfChange} />
                 </div>
                 <div className="book-title">{this.state.book.title}</div>
