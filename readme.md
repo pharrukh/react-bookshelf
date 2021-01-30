@@ -2,6 +2,17 @@
 
 [![Build Status](https://dev.azure.com/normuradov0143/normuradov/_apis/build/status/pharrukh.react-bookshelf?branchName=master)](https://dev.azure.com/normuradov0143/normuradov/_build/latest?definitionId=3&branchName=master)
 
+The project is deployed [here](https://www.normuradov.com/product/book-shelves/#/).
+
+## technologies
+
+- react
+- Azure Storage Static Website
+
+## value
+
+Learn basic react and pass project in Udacity React Nanodegree.
+
 ## how to run
 
 ```js
@@ -10,7 +21,12 @@ npm run build
 npm run start
 ```
 
-## about normuradov
+## deployment
+
+Build and release service by Microsoft, Azure DevOps handles the deployment.
+Build pipeline can be found by clicking on the build status badge above 👆.
+
+## about the author
 
 ![normuradov logo](https://raw.githubusercontent.com/pharrukh/pharrukh/master/normuradov.png "Logo")
 
