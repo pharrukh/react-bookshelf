@@ -30,7 +30,7 @@ class BooksApp extends Component {
   render() {
     return (
       <div className="app">
-        <HashRouter baseline="/book-shelves">
+        <HashRouter>
           <Route path='/search' render={() => <Search onBookUpdate={this.handleBookUpdate} />} />
           <Route exact path='/' render={() => <Bookshelves books={this.state.books} onBookUpdate={this.handleBookUpdate} />} />
         </HashRouter>
