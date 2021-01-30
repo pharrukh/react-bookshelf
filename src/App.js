@@ -3,7 +3,7 @@ import './App.css'
 import Search from './Search'
 import Bookshelves from './Bookshelves'
 import { Route } from 'react-router'
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import * as BooksAPI from './BooksAPI'
 
 class BooksApp extends Component {
@@ -30,10 +30,10 @@ class BooksApp extends Component {
   render() {
     return (
       <div className="app">
-        <BrowserRouter>
+        <HashRouter baseline="/book-shelves">
           <Route path='/search' render={() => <Search onBookUpdate={this.handleBookUpdate} />} />
           <Route exact path='/' render={() => <Bookshelves books={this.state.books} onBookUpdate={this.handleBookUpdate} />} />
-        </BrowserRouter>
+        </HashRouter>
       </div>
     )
   }
